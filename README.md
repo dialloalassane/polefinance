@@ -1,2 +1,2 @@
 # polefinance
-Library for fundamental and technical analysis and systematic investing
+BRVM Library for fundamental and technical analysis and systematic investing
