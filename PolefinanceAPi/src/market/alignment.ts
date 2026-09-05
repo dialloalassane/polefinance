@@ -1,0 +1,3 @@
+export type DatedValue={date:string;value:number};
+export function deduplicateSeries(xs:DatedValue[]):DatedValue[]{const m=new Map<string,number>();for(const x of xs)if(Number.isFinite(x.value))m.set(x.date,x.value);return [...m.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([date,value])=>({date,value}));}
+export function alignSeries(series:DatedValue[][]):{dates:string[];values:number[][]}{if(!series.length)return{dates:[],values:[]};const clean=series.map(deduplicateSeries),sets=clean.map(s=>new Set(s.map(x=>x.date)));const dates=clean[0].map(x=>x.date).filter(d=>sets.every(s=>s.has(d)));return{dates,values:clean.map(s=>{const m=new Map(s.map(x=>[x.date,x.value]));return dates.map(d=>m.get(d)!);})};}

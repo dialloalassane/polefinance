@@ -1,0 +1,3 @@
+export type RebalanceFrequency='daily'|'weekly'|'monthly'|'quarterly'|'annual'|'none';
+export function rebalanceKey(date:string,f:RebalanceFrequency){const d=new Date(date+'T00:00:00Z'),y=d.getUTCFullYear(),m=d.getUTCMonth()+1;if(f==='none')return'none';if(f==='daily')return date;if(f==='weekly'){const start=new Date(Date.UTC(y,0,1));const w=Math.floor((d.getTime()-start.getTime())/86400000/7);return`${y}-W${w}`;}if(f==='monthly')return`${y}-${m}`;if(f==='quarterly')return`${y}-Q${Math.floor((m-1)/3)+1}`;return String(y);}
+export function rebalanceFlags(dates:string[],f:RebalanceFrequency){let prev='';return dates.map((d,i)=>{const k=rebalanceKey(d,f),x=i===0||(f!=='none'&&k!==prev);prev=k;return x;});}

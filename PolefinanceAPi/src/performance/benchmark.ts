@@ -1,0 +1,3 @@
+import { calculateBeta, calculateAlpha, calculateTrackingError, calculateInformationRatio } from '../utils/backtesting';
+export function cumulativeCurve(returns:number[],start=1){let v=start;return returns.map(r=>(v*=1+r));}
+export function benchmarkComparison(portfolio:number[],benchmark:number[],ppy=252,rf=0){const n=Math.min(portfolio.length,benchmark.length);const p=portfolio.slice(0,n),b=benchmark.slice(0,n);const pc=cumulativeCurve(p),bc=cumulativeCurve(b);return{portfolioCumulative:pc,benchmarkCumulative:bc,activeReturn:(pc.at(-1)??1)-(bc.at(-1)??1),beta:calculateBeta(p,b),alpha:calculateAlpha(p,b,ppy,rf),trackingError:calculateTrackingError(p,b,ppy),informationRatio:calculateInformationRatio(p,b,ppy)};}

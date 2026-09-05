@@ -1,0 +1,38 @@
+export * from './types/result';
+export * from './accounting/transactions';
+export * from './accounting/ledger';
+export * from './accounting/corporateActions';
+export * from './accounting/realizedPnl';
+export * from './portfolio/portfolioValue';
+export * from './portfolio/exposures';
+export * from './portfolio/snapshots';
+export * from './portfolio/turnover';
+export * from './performance/returns';
+export * from './performance/attribution';
+export * from './performance/benchmark';
+export * from './risk/core';
+export * from './risk/drawdown';
+export * from './risk/rolling';
+export * from './risk/parametric';
+export * from './risk/dataQuality';
+export * from './risk/concentration';
+export * from './risk/correlation';
+export * from './optimization/models';
+export * from './optimization/constraints';
+export * from './backtesting/costs';
+export * from './backtesting/rebalance';
+export * from './backtesting/lookAhead';
+export * from './backtesting/engine';
+export * from './quant/monteCarlo';
+export * from './quant/stress';
+export * from './quant/scenarios';
+export * from './market/alignment';
+export * from './market/fx';
+export * from './market/returns';
+
+// Namespaced compatibility access to the original implementation modules.
+export * as legacyBacktesting from './utils/backtesting';
+export * as legacyQuantLab from './utils/quantLab';
+export * as legacyPortfolioMetrics from './utils/portfolioMetrics';
+export * as legacyPortfolioAnalytics from './calculations/portfolioAnalytics';
+export * as legacyPortfolioModels from './calculations/portfolioModels';
